@@ -1,5 +1,5 @@
 
-// Modified from code for GE Garage Chicago 2013
+// Modified for GE Garage Chicago 2013
 
 #include <Servo.h>
 #include <SPI.h>
@@ -274,7 +274,7 @@ void orientClock(){
   }
   for(int i = 0; i < pos; i ++)  
   {                              
-    dial.write(i); // i              
+    dial.write(i);              
     delay(15);                  
   } 
   delay(5000);
@@ -305,5 +305,4 @@ void printWifiData() {
     Serial.println(mac[0],HEX);
   }
 }
-
 
