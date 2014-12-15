@@ -76,12 +76,7 @@ void digitalCommand(YunClient client) {
   
   if (client.read() == '/') {
     value = client.parseInt();
-    if(digitalRead(noMatchPin) == HIGH){
-      resetPins();
-      digitalWrite(noMatchPin, LOW);
-    } else {
-      callPin(pin, value);
-    }
+    callPin(pin, value);
   }
   else {
     value = digitalRead(pin);
@@ -116,7 +111,6 @@ void sequenceBlink(int sequencePause){
   blink(itemOne, sequencePause);
   blink(itemTwo, sequencePause);
   blink(itemThree, sequencePause);
-  resetPins();
 }
 
 void resetPins(){
@@ -126,11 +120,17 @@ void resetPins(){
 }
 
 void callPin(int pin, int callState){
-  resetPins();
-  blink(pin, 150);
-  digitalWrite(pin, callState);
-  delay(3000);
-  sequenceBlink(50);
+  if(pin == 3){
+    sequenceBlink(100);
+    resetPins(); 
+  } else {
+    resetPins();
+    sequenceBlink(100);
+    resetPins();
+    digitalWrite(pin, callState);
+    delay(5000);
+    resetPins();
+  }
 }
 
 
