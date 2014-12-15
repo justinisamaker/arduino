@@ -15,6 +15,7 @@
 int itemOne = 9;
 int itemTwo = 7;
 int itemThree = 4;
+int noMatchPin = 3;
 int testPin = 13;
 
 YunServer server;
@@ -24,6 +25,7 @@ void setup() {
   pinMode(itemOne, OUTPUT);
   pinMode(itemTwo, OUTPUT);
   pinMode(itemThree, OUTPUT);
+  pinMode(noMatchPin, OUTPUT);
   pinMode(testPin, OUTPUT);
 
   digitalWrite(testPin, LOW);
@@ -74,7 +76,12 @@ void digitalCommand(YunClient client) {
   
   if (client.read() == '/') {
     value = client.parseInt();
-    callPin(pin, value);
+    if(digitalRead(noMatchPin) == HIGH){
+      resetPins();
+      digitalWrite(noMatchPin, LOW);
+    } else {
+      callPin(pin, value);
+    }
   }
   else {
     value = digitalRead(pin);
