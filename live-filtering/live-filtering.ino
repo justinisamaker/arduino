@@ -109,26 +109,26 @@ void sequenceBlink(int sequencePause){
   blink(itemThree, sequencePause);
   blink(itemTwo, sequencePause);
   blink(itemOne, sequencePause);
-  blink(itemTwo, sequencePause);
-  blink(itemThree, sequencePause);
 }
 
 void resetPins(){
   digitalWrite(itemOne, LOW);
   digitalWrite(itemTwo, LOW);
   digitalWrite(itemThree, LOW);
+  digitalWrite(noMatchPin, LOW);
 }
 
 void callPin(int pin, int callState){
   if(pin == 3){
+    resetPins();
     sequenceBlink(100);
-    resetPins(); 
+    resetPins();
   } else {
     resetPins();
     sequenceBlink(100);
     resetPins();
     digitalWrite(pin, callState);
-    delay(5000);
+    delay(4000);
     resetPins();
   }
 }
