@@ -17,7 +17,7 @@ console.log('MRAA Version: ' + m.getVersion());
 var soundSensor = new m.Aio(0);
 
 // Set the sound threshold
-var threshold = 700;
+var threshold = 900;
 
 // Run the function to start out
 checkSoundLevels();
@@ -33,19 +33,22 @@ function checkSoundLevels(){
   // If the sound is higher than the threshold, make the request
   if(soundValue >= threshold){
     // Use the request library to hit the Sparkfun URL - make sure you replace the applicable parts with your data
-		request('http://data.sparkfun.com/input/[YOUR STREAM ID]?private_key=[YOUR PRIVATE KEY]&soundLevel=' + soundValue, function(error, response, body){
+		request('http://data.sparkfun.com/input/[INSERT PUBLIC KEY]?private_key=[INSERT PRIVATE KEY]&soundlevel=' + soundValue, function(error, response, body){
       console.log(response.statusCode);
       // If the response is good, wait 5 seconds before we start checking again
       if(response.statusCode === 200){
-      	console.log('posted successfully');
-      	setTimeout(function(){}, 5000);
-      	setTimeout(checkSoundLevels, 100);
+      	console.log('posted successfully with a sound value of ' + soundValue);
+      	setTimeout(function(){
+          setTimeout(checkSoundLevels, 100);
+        }, 5000);
       } else {
       	console.log('oops, there was an error');
+        console.log(response.statusCode + ' :::: ' + response.body);
       	setTimeout(checkSoundLevels, 100);
       }
 		});
   } else {
   	setTimeout(checkSoundLevels, 100);
+    console.log(soundValue);
   }
 }
