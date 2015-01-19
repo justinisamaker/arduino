@@ -33,7 +33,7 @@ function checkSoundLevels(){
   // If the sound is higher than the threshold, make the request
   if(soundValue >= threshold){
     // Use the request library to hit the Sparkfun URL - make sure you replace the applicable parts with your data
-		request('http://data.sparkfun.com/input/[YOUR STREAM ID]?private_key=[YOUR PRIVATE KEY]&decibel=' + soundValue, function(error, response, body){
+		request('http://data.sparkfun.com/input/[YOUR STREAM ID]?private_key=[YOUR PRIVATE KEY]&soundLevel=' + soundValue, function(error, response, body){
       console.log(response.statusCode);
       // If the response is good, wait 5 seconds before we start checking again
       if(response.statusCode === 200){
