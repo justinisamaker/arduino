@@ -1,20 +1,21 @@
 { 
-  "name": "Bark Tracker",
-  "description": "Sound Tracking with data.Sparkfun integration for the Intel Edison.",
+  "name": "barker",
+  "description": "Sound Tracking with data.Sparkfun integration for the Intel Ed
   "version": "0.0.1",
   "keywords": [
-    "arduino",
-    "edison",
-    "data.sparkfun"
+    "arduino"
   ],
   "maintainers": [
     { 
       "name": "Justin Smith",
       "email": "justin@isamaker.com",
-      "web": "justin.isamaker.com"
+      "web": "isamaker.com"
     }
   ],
   "dependencies": {
-    "https://registry.npmjs.org/request": ""
+    "forever": "*",
+    "moment": "^2.9.0",
+    "moment-timezone": "*",
+    "request": "*"
   }
 }
