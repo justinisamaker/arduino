@@ -1,6 +1,6 @@
 { 
   "name": "barker",
-  "description": "Sound Tracking with data.Sparkfun integration for the Intel Ed
+  "description": "Sound Tracking with data.Sparkfun integration for the Intel Edison",
   "version": "0.0.1",
   "keywords": [
     "arduino"
