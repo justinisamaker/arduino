@@ -7,10 +7,9 @@
 #define maxRot 40
 
 int potVal;
-int motorCur = 0; //motor_position in Shawn's code - the curPos of the mot 0->40
-int motorNew; // new pos that the motor is going to
-int motorMove; //steps to move in Shawn's code
-//int dir;
+int motorCur = 0;
+int motorNew;
+int motorMove;
 
  Stepper stepper(numSteps, 8,9,10,11);
 
